@@ -36,7 +36,6 @@ function renderGallery(hits) {
         }).join("");
     galleryEl.insertAdjacentHTML("beforeend", markup);
 
-    // if the user has reached the end of the collection
     if (options.params.page * options.params.per_page >= totalHits) {
         if (!reachEnd) {
             Notify.info("We are sorry but you've reached the end of the search result");
@@ -72,6 +71,7 @@ async function handleSubmit(e) {
         Notify.failure(e);
     }
 }
+
 async function loadMore() {
     options.params.page += 1;
     try {
@@ -88,5 +88,6 @@ function handleScroll() {
         loadMore();
     }
 }
+
 searchFormEl.addEventListener("submit", handleSubmit);
 window.addEventListener("scroll", handleScroll);
